@@ -12,7 +12,7 @@
 
   <!-- 配置调度程序quartz ，其中配置JobDetail有两种方式-->
   <!--方式一：使用JobDetailBean，任务类必须实现Job接口 -->
-  <bean id="myjob" class="org.springframework.scheduling.quartz.JobDetailBean">
+  <bean id="myjob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
     <property name="name" value="exampleJob"></property>
     <property name="jobClass" value="com.dupang.quartz.SpringQtz1"></property>
     <property name="jobDataAsMap">
@@ -35,7 +35,7 @@
   </bean>
 
   <!-- ======================== 调度触发器 ======================== -->
-  <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerBean">
+  <bean id="CronTriggerBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
     <property name="jobDetail" ref="SpringQtzJobMethod"></property>
     <property name="cronExpression" value="0/5 * * * * ?"></property>
   </bean>
